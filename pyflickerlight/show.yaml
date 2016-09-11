@@ -1,0 +1,49 @@
+title: Yellow Flicker Beat
+artist: Lorde
+location: assets/song.wav
+date: 2016-09-10
+start_time: 0
+speed: 1
+volume: 1
+show:
+  - time: 1
+    commands:
+      - group: 0
+        name: set
+        color: 0xff0000
+
+  - time: 5
+    commands:
+      - group: 0
+        type: set
+        color: 0x000000
+  - time: 5.6
+    commands:
+      - group: 0
+        type: set
+        color: 0xff0000
+  - time: 10.1
+    commands:
+      - group: 0
+        type: set
+        color: 0x000000
+  - time: 10.6
+    commands:
+      - group: 0
+        type: set
+        color: 0x7f7f00
+  - time: 15.0
+    commands:
+      - group: 0
+        type: set
+        color: 0x000000
+  - time: 15.4
+    commands:
+      - group: 0
+        type: set
+        color: 0xff0000
+  - time: 21.0
+    commands:
+      - group: 0
+        type: set
+        color: 0

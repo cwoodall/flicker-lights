@@ -1,0 +1,26 @@
+message Flicker {
+  required uint32 length = 1;
+  required uint32 rate = 2;
+  required uint32 on_color = 3;
+  optional uint32 off_color = 4;
+}
+
+message Fade {
+  required uint32 length = 1;
+  required uint32 dest_color = 2;
+  optional uint32 start_color = 3;
+}
+
+message SetColor {
+  required uint32 dest_color = 1;
+}
+
+message Command {
+  required uint32 groupid = 1;
+  required uint32 timestamp = 2;
+  oneof payload {
+    Flicker flicker_command = 3;
+    Fade fade_command = 4;
+    SetColor set_color_command = 5;
+  }
+}
