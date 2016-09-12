@@ -1,0 +1,6 @@
+*.pyc
+*.pb
+.clang_complete
+pyflickerlight/assets
+*.wav
+*.mp3

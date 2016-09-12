@@ -4,6 +4,10 @@
 #include "Arduino.h"
 #include "SPI.h"
 #include "RF24.h"
+#include "pb_decode.h"
+#include "pb_encode.h"
+#include "flicker_base_message.pb.h"
+#include "flicker_base_response.pb.h"
 
 /* ==== User Config ==== */
 const int SERIAL_BAUDRATE = 9600;
@@ -34,47 +38,81 @@ void serviceRadio() {
   if(!m_radio.write(&colors, sizeof(unsigned long))) {
     Serial.println(F("failed"));
   }
+
   m_radio.startListening();
 
 }
 
-char buf[256] = {};
+char buf[64] = {};
 int buf_i = 0;
 
 void setup() {
   Serial.begin(SERIAL_BAUDRATE);
-  Serial.println(F("DANCE MASTER 001"));
-  Serial.println(F("Yars1"));
 
   radioSetup();
   // put your setup code here, to run once:
 
 }
 
+#define MESSAGE_DELIMITER ((char)0x7D)
+#define MESSAGE_ESCAPE ((char)0x7E)
+
 void loop() {
   // put your main code here, to run repeatedly:
   serviceRadio();
+  static bool escaped = false;
+  static bool in_message = false;
 
-  if ( Serial.available() )
-  {
-    if (buf_i < 256) {
-      char c = Serial.read();
-      if (c == '\n') {
-        if (buf_i >= 2) {
-          char code = buf[0];
-          if (code == 'c' && buf[1] == ' ') {
-            if (buf_i == 8) {
-              colors = strtoul(&buf[2],NULL,16);
-              Serial.println(colors);
-            }
-          }
-        }
-        buf_i = 0;
-      } else {
-        buf[buf_i++] = c;
+  /**
+   * 0x7D is message delimiter
+   * 0x7E is escape
+   */
+  if (Serial.available()) {
+    char c = Serial.read();
+    if (!in_message) {
+      switch (c) {
+        case MESSAGE_DELIMITER:
+          in_message = true;
+          escaped = false;
+          break;
+        case MESSAGE_ESCAPE:
+        default:
+          break;
       }
     } else {
-      buf_i = 0;
+      switch (c) {
+        case MESSAGE_DELIMITER:
+        if (!escaped) {
+          //process end of message
+          FlickerBaseMessage cmd = FlickerBaseMessage_init_zero;
+          pb_istream_t stream = pb_istream_from_buffer((const pb_byte_t *)buf, buf_i);
+          bool status = pb_decode(&stream, FlickerBaseMessage_fields, &cmd);
+          if (!status) {
+            Serial.print(PB_GET_ERROR(&stream));
+          }
+
+          Serial.println(cmd.groupid);
+          Serial.println(cmd.which_payload);
+          if (cmd.which_payload == FlickerBaseMessage_setColor_tag) {
+            Serial.println(cmd.payload.setColor.dest_color);
+            colors = cmd.payload.setColor.dest_color;
+          }
+          in_message = false;
+          escaped = false;
+          buf_i = 0;
+          break;
+        }
+        case MESSAGE_ESCAPE:
+          if (!escaped) {
+            escaped = true;
+            break;
+          } else {
+            escaped = false;
+          }
+        default:
+          buf[buf_i++] = c;
+          break;
+      }
     }
   }
 }

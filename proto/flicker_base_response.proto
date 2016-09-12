@@ -1,0 +1,9 @@
+message FlickerBaseResponse {
+  enum ErrorType {
+    ACK = 0;
+    DECODE_ERROR = 1;
+    COMMUNICATION_ERROR = 2;
+  }
+
+  required ErrorType err = 1;
+}

@@ -4,8 +4,10 @@ import time
 import serial
 import threading
 import yaml
+import flicker_base_message_pb2 as pb_message
 
-s = serial.Serial("/dev/ttyACM0")
+
+s = serial.Serial("/dev/ttyACM1")
 
 pyglet.options['audio'] = ('openal', 'pulse', 'silent')
 
@@ -25,6 +27,18 @@ start_time = float(show_config["start_time"]) + .00001 # for some reason pyglet 
 player.seek(start_time)
 player.play()
 
+def EncodeMessage(msg):
+    final_msg = "\x7D"
+    for b in msg:
+        if b in ["\x7D", "\x7E"]:
+            final_msg += '\x7E'
+        final_msg += b
+    final_msg += '\x7D'
+    for b in final_msg:
+        print "{:x}".format(ord(b)),
+    print
+    return final_msg
+
 for i, step  in enumerate(show):
     commands = step['commands']
     while player.time < (float(step['time'])+start_time):
@@ -33,8 +47,14 @@ for i, step  in enumerate(show):
         time.sleep(.01)
 
     for command in commands:
-        print "c {0:06x}|".format(command['color'])
-        s.write('c {0:06x}\n'.format(command['color']))
+        msg = pb_message.FlickerBaseMessage()
+        msg.groupid = 0
+        msg.timestamp = 0
+        msg.setColor.dest_color = command['color']
+        msg_serialized = msg.SerializeToString()
+
+        s.write(EncodeMessage(msg_serialized))
+        print s.read(s.in_waiting)
 #
 # t.run()
 # time.sleep(100)
