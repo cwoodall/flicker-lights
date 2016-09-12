@@ -29,7 +29,7 @@ void radioSetup() {
 void serviceRadio() {
   m_radio.stopListening();
 
-//  Serial.println(F("SENDING"));
+  // Serial.println(F("SENDING"));
 
   if(!m_radio.write(&colors, sizeof(unsigned long))) {
     Serial.println(F("failed"));

@@ -21,14 +21,15 @@ song = pyglet.media.load(show_config["location"])
 player = pyglet.media.Player()
 player.queue(song)
 player.pitch = float(show_config['speed'])
-start_time = float(show_config["start_time"])
-print start_time
+start_time = float(show_config["start_time"]) + .00001 # for some reason pyglet Players fail if you set start_time to 0
 player.seek(start_time)
 player.play()
 
 for i, step  in enumerate(show):
     commands = step['commands']
-    while player.time < float(step['time'])+start_time:
+    while player.time < (float(step['time'])+start_time):
+        # print player.time
+        # print float(step['time'])+start_time
         time.sleep(.01)
 
     for command in commands:
