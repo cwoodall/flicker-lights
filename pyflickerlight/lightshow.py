@@ -4,59 +4,72 @@ import time
 import serial
 import threading
 import yaml
+import logging
+from argparse import ArgumentParser
+
 import flicker_base_message_pb2 as pb_message
+from six import iterbytes
 
-
-s = serial.Serial("/dev/ttyACM1")
-
-pyglet.options['audio'] = ('openal', 'pulse', 'silent')
-
-show_config = None
-with open("show.yaml", 'rb') as show_file:
-    show_config = yaml.load(show_file.read())
-
-print("Playing show {0} starting at time {1} with {2}x speed".format(
-    show_config['title'], show_config['start_time'], show_config['speed']))
-
-show = show_config["show"]
-song = pyglet.media.load(show_config["location"])
-player = pyglet.media.Player()
-player.queue(song)
-player.pitch = float(show_config['speed'])
-start_time = float(show_config["start_time"]) + .00001 # for some reason pyglet Players fail if you set start_time to 0
-player.seek(start_time)
-player.play()
-
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 def EncodeMessage(msg):
-    final_msg = "\x7D"
+    final_msg = b"\x7D"
     for b in msg:
-        if b in ["\x7D", "\x7E"]:
-            final_msg += '\x7E'
-        final_msg += b
-    final_msg += '\x7D'
-    for b in final_msg:
-        print "{:x}".format(ord(b)),
-    print
+        if b in [0x7D, 0x7E]:
+            logger.critical(b)
+            final_msg += b'\x7E'
+        final_msg += bytes([b])
+    final_msg += b'\x7D'
+    logger.critical(final_msg)
     return final_msg
 
-for i, step  in enumerate(show):
-    commands = step['commands']
-    while player.time < (float(step['time'])+start_time):
-        # print player.time
-        # print float(step['time'])+start_time
-        time.sleep(.01)
+if __name__ == "__main__":
+    # Configure pyglet to use openAL if available
+    pyglet.options['audio'] = ('openal', 'pulse', 'silent')
 
-    for command in commands:
-        msg = pb_message.FlickerBaseMessage()
-        msg.groupid = 0
-        msg.timestamp = 0
-        msg.setColor.dest_color = command['color']
-        msg_serialized = msg.SerializeToString()
+    # CLI arguments
+    parser = ArgumentParser(
+        description="Playback a flicker-light show.yaml file.")
+    parser.add_argument("--port", "-p", type=str,
+                        help="Serial port to use [default = /dev/ttyACM0]",
+                        default = "/dev/ttyACM0")
+    parser.add_argument("show", type=str,
+                        help="Lightshow.yaml file to playback.")
 
-        s.write(EncodeMessage(msg_serialized))
-        print s.read(s.in_waiting)
-#
-# t.run()
-# time.sleep(100)
-player.pause()
-s.close()
+    args = parser.parse_args()
+
+    s = serial.Serial(args.port)
+
+    show_config = None
+    with open(args.show, 'rb') as show_file:
+        show_config = yaml.load(show_file.read())
+
+    logger.debug("Playing show {0} starting at time {1} with {2}x speed".format(
+        show_config['title'], show_config['start_time'], show_config['speed']))
+
+    show = show_config["show"]
+    song = pyglet.media.load(show_config["location"])
+    player = pyglet.media.Player()
+    player.queue(song)
+    player.pitch = float(show_config['speed'])
+    start_time = float(show_config["start_time"]) + .00001 # for some reason pyglet Players fail if you set start_time to 0
+    player.seek(start_time)
+    player.play()
+
+
+    for i, step  in enumerate(show):
+        commands = step['commands']
+        while player.time < (float(step['time'])+start_time):
+            time.sleep(.01)
+
+        for command in commands:
+            msg = pb_message.FlickerBaseMessage()
+            msg.groupid = 0
+            msg.timestamp = 0
+            msg.setColor.dest_color = command['color']
+            msg_serialized = msg.SerializeToString()
+
+            s.write(EncodeMessage(msg_serialized))
+
+    player.pause()
+    s.close()

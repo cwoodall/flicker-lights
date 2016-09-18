@@ -1,1 +1,4 @@
-pyglet==1.1.0
+pyglet==1.2.4
+PyYaml
+pyserial
+protobuf
