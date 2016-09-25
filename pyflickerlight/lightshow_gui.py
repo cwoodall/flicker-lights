@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'lightshow_editor.ui'
 #
-# Created: Sun Sep 18 20:30:57 2016
+# Created: Tue Sep 20 08:30:27 2016
 #      by: PyQt5 UI code generator 5.2.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -12,19 +12,27 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(642, 600)
+        MainWindow.resize(871, 600)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
         self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.testCanvas = MyGraphicsView(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.testCanvas.sizePolicy().hasHeightForWidth())
+        self.testCanvas.setSizePolicy(sizePolicy)
         self.testCanvas.setMaximumSize(QtCore.QSize(2000, 125))
         self.testCanvas.setSceneRect(QtCore.QRectF(0.0, 0.0, 0.0, 0.0))
         self.testCanvas.setDragMode(QtWidgets.QGraphicsView.NoDrag)
         self.testCanvas.setObjectName("testCanvas")
-        self.verticalLayout_2.addWidget(self.testCanvas)
+        self.horizontalLayout_2.addWidget(self.testCanvas)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_2)
         self.verticalLayout_3.addLayout(self.verticalLayout_2)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
@@ -37,7 +45,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.addLayout(self.horizontalLayout)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 642, 25))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 871, 25))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
