@@ -7,7 +7,8 @@ import yaml
 import logging
 from argparse import ArgumentParser
 
-import flicker_base_message_pb2 as pb_message
+import flickerlights.proto as pb_message
+
 from six import iterbytes
 
 logger = logging.getLogger(__name__)

@@ -4,3 +4,5 @@
 pyflickerlight/assets
 *.wav
 *.mp3
+__pycache__
+venv
