@@ -6,6 +6,7 @@ import threading
 import yaml
 import logging
 from argparse import ArgumentParser
+import click
 
 import flickerlights.proto as pb_message
 
@@ -19,7 +20,7 @@ def EncodeMessage(msg):
         if b in [0x7D, 0x7E]:
             logger.critical(b)
             final_msg += b'\x7E'
-        final_msg += bytes([b])
+        final_msg += bytes(b)
     final_msg += b'\x7D'
     logger.critical(final_msg)
     return final_msg
@@ -61,15 +62,16 @@ if __name__ == "__main__":
     for i, step  in enumerate(show):
         commands = step['commands']
         while player.time < (float(step['time'])+start_time):
+            # if (s.inWaiting()):
+            #     print(s.read(s.inWaiting()))
             time.sleep(.01)
 
         for command in commands:
             msg = pb_message.FlickerBaseMessage()
             msg.groupid = 0
             msg.timestamp = 0
-            msg.setColor.dest_color = command['color']
+            msg.setColor.dest_color = int(command['color'])
             msg_serialized = msg.SerializeToString()
-
             s.write(EncodeMessage(msg_serialized))
 
     player.pause()

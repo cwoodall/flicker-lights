@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='flicker_base_message.proto',
   package='',
   syntax='proto2',
-  serialized_pb=_b('\n\x1a\x66licker_base_message.proto\"K\n\x06Strobe\x12\x0e\n\x06length\x18\x01 \x02(\r\x12\x0c\n\x04rate\x18\x02 \x02(\r\x12\x10\n\x08on_color\x18\x03 \x02(\r\x12\x11\n\toff_color\x18\x04 \x01(\r\"?\n\x04\x46\x61\x64\x65\x12\x0e\n\x06length\x18\x01 \x02(\r\x12\x12\n\ndest_color\x18\x02 \x02(\r\x12\x13\n\x0bstart_color\x18\x03 \x01(\r\"\x1e\n\x08SetColor\x12\x12\n\ndest_color\x18\x01 \x02(\r\"\x94\x01\n\x12\x46lickerBaseMessage\x12\x0f\n\x07groupid\x18\x01 \x02(\r\x12\x11\n\ttimestamp\x18\x02 \x02(\r\x12\x19\n\x06strobe\x18\x03 \x01(\x0b\x32\x07.StrobeH\x00\x12\x15\n\x04\x66\x61\x64\x65\x18\x04 \x01(\x0b\x32\x05.FadeH\x00\x12\x1d\n\x08setColor\x18\x05 \x01(\x0b\x32\t.SetColorH\x00\x42\t\n\x07payload')
+  serialized_pb=_b('\n\x1a\x66licker_base_message.proto\"K\n\x06Strobe\x12\x0e\n\x06length\x18\r \x02(\r\x12\x0c\n\x04rate\x18\x0c \x02(\r\x12\x10\n\x08on_color\x18\x0b \x02(\r\x12\x11\n\toff_color\x18\n \x01(\r\"?\n\x04\x46\x61\x64\x65\x12\x0e\n\x06length\x18\t \x02(\r\x12\x12\n\ndest_color\x18\x08 \x02(\r\x12\x13\n\x0bstart_color\x18\x07 \x01(\r\"\x1e\n\x08SetColor\x12\x12\n\ndest_color\x18\x06 \x02(\r\"\x94\x01\n\x12\x46lickerBaseMessage\x12\x0f\n\x07groupid\x18\x01 \x02(\r\x12\x11\n\ttimestamp\x18\x02 \x02(\r\x12\x19\n\x06strobe\x18\x03 \x01(\x0b\x32\x07.StrobeH\x00\x12\x15\n\x04\x66\x61\x64\x65\x18\x04 \x01(\x0b\x32\x05.FadeH\x00\x12\x1d\n\x08setColor\x18\x05 \x01(\x0b\x32\t.SetColorH\x00\x42\t\n\x07payload')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -35,28 +35,28 @@ _STROBE = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='length', full_name='Strobe.length', index=0,
-      number=1, type=13, cpp_type=3, label=2,
+      number=13, type=13, cpp_type=3, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='rate', full_name='Strobe.rate', index=1,
-      number=2, type=13, cpp_type=3, label=2,
+      number=12, type=13, cpp_type=3, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='on_color', full_name='Strobe.on_color', index=2,
-      number=3, type=13, cpp_type=3, label=2,
+      number=11, type=13, cpp_type=3, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='off_color', full_name='Strobe.off_color', index=3,
-      number=4, type=13, cpp_type=3, label=1,
+      number=10, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -87,21 +87,21 @@ _FADE = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='length', full_name='Fade.length', index=0,
-      number=1, type=13, cpp_type=3, label=2,
+      number=9, type=13, cpp_type=3, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='dest_color', full_name='Fade.dest_color', index=1,
-      number=2, type=13, cpp_type=3, label=2,
+      number=8, type=13, cpp_type=3, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
       name='start_color', full_name='Fade.start_color', index=2,
-      number=3, type=13, cpp_type=3, label=1,
+      number=7, type=13, cpp_type=3, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -132,7 +132,7 @@ _SETCOLOR = _descriptor.Descriptor(
   fields=[
     _descriptor.FieldDescriptor(
       name='dest_color', full_name='SetColor.dest_color', index=0,
-      number=1, type=13, cpp_type=3, label=2,
+      number=6, type=13, cpp_type=3, label=2,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,

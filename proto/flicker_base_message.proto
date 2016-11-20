@@ -1,18 +1,18 @@
 message Strobe {
-  required uint32 length = 1;
-  required uint32 rate = 2;
-  required uint32 on_color = 3;
-  optional uint32 off_color = 4;
+  required uint32 length = 13;
+  required uint32 rate = 12;
+  required uint32 on_color = 11;
+  optional uint32 off_color = 10;
 }
 
 message Fade {
-  required uint32 length = 1;
-  required uint32 dest_color = 2;
-  optional uint32 start_color = 3;
+  required uint32 length = 9;
+  required uint32 dest_color = 8;
+  optional uint32 start_color = 7;
 }
 
 message SetColor {
-  required uint32 dest_color = 1;
+  required uint32 dest_color = 6;
 }
 
 message FlickerBaseMessage {
