@@ -27,10 +27,3 @@ class MyGraphicsView(QtWidgets.QGraphicsView):
             print (self.currentScale)
             self.currentScale *= zoomFactor
             self.scale(zoomFactor, 1)
-
-        # Get the new position
-        #newPos = self.mapToScene(event.pos())
-
-        # Move scene to old position
-#        delta = newPos - oldPos
-        #self.translate(delta.x(), delta.y())

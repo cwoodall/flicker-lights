@@ -2,3 +2,4 @@ pyglet==1.2.4
 PyYaml
 pyserial
 protobuf
+click

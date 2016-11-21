@@ -1,0 +1,168 @@
+artist: Lorde
+date: '2016-09-10'
+location: assets/song.wav
+show:
+- commands:
+  - color: 16711680
+    group: 0
+    type: set
+  time: 1.25
+- commands:
+  - color: 0
+    group: 0
+    type: set
+  time: 3.0
+- commands:
+  - color: 0
+    group: 0
+    type: set
+  time: 3.5
+- commands:
+  - color: 0
+    group: 0
+    type: set
+  time: 4.0
+- commands:
+  - color: 16711680
+    group: 0
+    type: set
+  time: 5.0
+- commands:
+  - color: 0
+    group: 0
+    type: set
+  time: 7.0
+- commands:
+  - color: 0
+    group: 0
+    type: set
+  time: 7.25
+- commands:
+  - color: 5963776
+    group: 0
+    type: set
+  time: 7.5
+- commands:
+  - color: 5963776
+    group: 0
+    type: set
+  time: 7.75
+- commands:
+  - color: 5963776
+    group: 0
+    type: set
+  time: 8.0
+- commands:
+  - color: 11010048
+    group: 0
+    type: set
+  time: 8.25
+- commands:
+  - color: 11010048
+    group: 0
+    type: set
+  time: 8.5
+- commands:
+  - color: 11010048
+    group: 0
+    type: set
+  time: 8.75
+- commands:
+  - color: 11010048
+    group: 0
+    type: set
+  time: 9.0
+- commands:
+  - color: 11010048
+    group: 0
+    type: set
+  time: 9.25
+- commands:
+  - color: 11010048
+    group: 0
+    type: set
+  time: 9.5
+- commands:
+  - color: 12124160
+    group: 0
+    type: set
+  time: 9.75
+- commands:
+  - color: 12124160
+    group: 0
+    type: set
+  time: 10.0
+- commands:
+  - color: 12124160
+    group: 0
+    type: set
+  time: 10.25
+- commands:
+  - color: 12124160
+    group: 0
+    type: set
+  time: 10.5
+- commands:
+  - color: 16711680
+    group: 0
+    type: set
+  time: 10.75
+- commands:
+  - color: 16711680
+    group: 0
+    type: set
+  time: 11.0
+- commands:
+  - color: 16711680
+    group: 0
+    type: set
+  time: 11.25
+- commands:
+  - color: 16711680
+    group: 0
+    type: set
+  time: 11.5
+- commands:
+  - color: 16711680
+    group: 0
+    type: set
+  time: 11.75
+- commands:
+  - color: 16711680
+    group: 0
+    type: set
+  time: 12.0
+- commands:
+  - color: 0
+    group: 0
+    type: set
+  time: 12.25
+- commands:
+  - color: 16777215
+    group: 0
+    type: set
+  time: 13.0
+- commands:
+  - color: 11141375
+    group: 0
+    type: set
+  time: 15.0
+- commands:
+  - color: 22015
+    group: 0
+    type: set
+  time: 17.0
+- commands:
+  - color: 16776960
+    group: 0
+    type: set
+  time: 18.0
+- commands:
+  - color: 43520
+    group: 0
+    type: set
+  time: 19.0
+speed: 1
+start_time: 0
+title: Yellow Flicker Beat
+volume: 1
