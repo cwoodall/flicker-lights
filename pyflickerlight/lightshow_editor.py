@@ -1,6 +1,6 @@
 import sys
 import yaml
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets, uic
 from lightshow_gui import Ui_MainWindow
 import math
 
@@ -114,16 +114,17 @@ class MyGraphicsScene(QtWidgets.QGraphicsScene):
             for collidingItem in collidingItems:
                 self.removeItem(collidingItem)
 
-class LightshowProgram(Ui_MainWindow):
+class LightshowProgram(QtWidgets.QMainWindow):
     def setupGraphicsScene(self):
             self.sceneLength = self.tickDistance * (self.songLength/self.timePerTick)
             self.scene = MyGraphicsScene(self.tickDistance, 1/self.timePerTick)
             self.testCanvas.setScene(self.scene)
             self.testCanvas.setSceneRect(0,0,self.sceneLength,50)
 
-    def __init__(self, window):
-        Ui_MainWindow.__init__(self)
-        self.setupUi(window)
+    def __init__(self):
+        QtWidgets.QMainWindow.__init__(self)
+        uic.loadUi('lightshow_editor.ui', self)
+        # self.setupUi(window)
         self.songLength = 60*1
         self.timePerTick = .25
         self.tickDistance = 10
@@ -183,10 +184,10 @@ class LightshowProgram(Ui_MainWindow):
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication(sys.argv)
-    window = QtWidgets.QMainWindow()
+    # window = QtWidgets.QMainWindow()
 
-    prog = LightshowProgram(window)
+    prog = LightshowProgram()
 
-    window.show()
+    prog.show()
 
     sys.exit(app.exec_())
