@@ -3,7 +3,7 @@ artist: Lorde
 location: assets/song.wav
 date: 2016-09-10
 start_time: 0
-speed: 2
+speed: 1
 volume: 1
 show:
   - time: 1

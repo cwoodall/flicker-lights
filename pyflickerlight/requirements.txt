@@ -3,3 +3,5 @@ PyYaml
 pyserial
 protobuf
 click
+tinytag
+numpy

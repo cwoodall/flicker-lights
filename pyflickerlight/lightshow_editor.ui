@@ -23,27 +23,27 @@
       <item row="0" column="0">
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>Song Name</string>
+         <string>Title</string>
         </property>
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QLineEdit" name="lineEdit"/>
+       <widget class="QLineEdit" name="titleLabel"/>
       </item>
       <item row="1" column="0">
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>Artist Name</string>
+         <string>Artist</string>
         </property>
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QLineEdit" name="lineEdit_2"/>
+       <widget class="QLineEdit" name="artistLabel"/>
       </item>
       <item row="2" column="0">
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Song Length</string>
+         <string>Duration</string>
         </property>
        </widget>
       </item>
@@ -67,23 +67,23 @@
       <item row="4" column="1">
        <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
-         <widget class="QLabel" name="label_7">
+         <widget class="QLabel" name="filenameLabel">
           <property name="text">
            <string>File Name.mp3</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="pushButton">
+         <widget class="QPushButton" name="loadSongButton">
           <property name="text">
-           <string>PushButton</string>
+           <string>Load File</string>
           </property>
          </widget>
         </item>
        </layout>
       </item>
       <item row="2" column="1">
-       <widget class="QLabel" name="label_5">
+       <widget class="QLabel" name="durationLabel">
         <property name="text">
          <string>SongLength</string>
         </property>
@@ -97,6 +97,9 @@
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="plottingLayout"/>
     </item>
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_2">
