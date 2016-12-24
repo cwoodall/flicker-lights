@@ -18,7 +18,6 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='flicker_base_response.proto',
   package='',
-  syntax='proto2',
   serialized_pb=_b('\n\x1b\x66licker_base_response.proto\"\x83\x01\n\x13\x46lickerBaseResponse\x12+\n\x03\x65rr\x18\x01 \x02(\x0e\x32\x1e.FlickerBaseResponse.ErrorType\"?\n\tErrorType\x12\x07\n\x03\x41\x43K\x10\x00\x12\x10\n\x0c\x44\x45\x43ODE_ERROR\x10\x01\x12\x17\n\x13\x43OMMUNICATION_ERROR\x10\x02')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -75,7 +74,6 @@ _FLICKERBASERESPONSE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],

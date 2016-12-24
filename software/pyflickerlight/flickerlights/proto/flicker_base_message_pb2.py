@@ -18,7 +18,6 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='flicker_base_message.proto',
   package='',
-  syntax='proto2',
   serialized_pb=_b('\n\x1a\x66licker_base_message.proto\"K\n\x06Strobe\x12\x0e\n\x06length\x18\r \x02(\r\x12\x0c\n\x04rate\x18\x0c \x02(\r\x12\x10\n\x08on_color\x18\x0b \x02(\r\x12\x11\n\toff_color\x18\n \x01(\r\"?\n\x04\x46\x61\x64\x65\x12\x0e\n\x06length\x18\t \x02(\r\x12\x12\n\ndest_color\x18\x08 \x02(\r\x12\x13\n\x0bstart_color\x18\x07 \x01(\r\"\x1e\n\x08SetColor\x12\x12\n\ndest_color\x18\x06 \x02(\r\"\x94\x01\n\x12\x46lickerBaseMessage\x12\x0f\n\x07groupid\x18\x01 \x02(\r\x12\x11\n\ttimestamp\x18\x02 \x02(\r\x12\x19\n\x06strobe\x18\x03 \x01(\x0b\x32\x07.StrobeH\x00\x12\x15\n\x04\x66\x61\x64\x65\x18\x04 \x01(\x0b\x32\x05.FadeH\x00\x12\x1d\n\x08setColor\x18\x05 \x01(\x0b\x32\t.SetColorH\x00\x42\t\n\x07payload')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -69,7 +68,6 @@ _STROBE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -114,7 +112,6 @@ _FADE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -145,7 +142,6 @@ _SETCOLOR = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
   ],
@@ -204,7 +200,6 @@ _FLICKERBASEMESSAGE = _descriptor.Descriptor(
   ],
   options=None,
   is_extendable=False,
-  syntax='proto2',
   extension_ranges=[],
   oneofs=[
     _descriptor.OneofDescriptor(
