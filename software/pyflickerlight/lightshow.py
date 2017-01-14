@@ -16,7 +16,7 @@ logger.setLevel(logging.DEBUG)
 @click.argument("show_file", type=click.File('rb'))
 def cli(port, show_file):
     # Configure pyglet to use openAL if available
-    pyglet.options['audio'] = ('openal', 'pulse', 'silent')
+    pyglet.options['audio'] = ('pulse', 'silent')
 
     s = serial.Serial(port)
     show_config = yaml.load(show_file.read())
