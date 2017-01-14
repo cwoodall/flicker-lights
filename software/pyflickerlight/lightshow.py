@@ -9,9 +9,10 @@ import flickerlights.proto as pb
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
 
+
 @click.command()
-@click.option("--port", "-p", type=str, default = "/dev/ttyACM0",
-              help="Serial port to use [default = /dev/ttyACM0]",)
+@click.option("--port", "-p", type=str, default="/dev/ttyACM0",
+              help="Serial port to use [default = /dev/ttyACM0]")
 @click.argument("show_file", type=click.File('rb'))
 def cli(port, show_file):
     # Configure pyglet to use openAL if available
@@ -33,7 +34,7 @@ def cli(port, show_file):
     player.seek(start_time)
     player.play()
 
-    for i, step  in enumerate(show):
+    for i, step in enumerate(show):
         commands = step['commands']
         while player.time < (float(step['time'])+start_time):
             time.sleep(.01)

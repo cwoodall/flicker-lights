@@ -34,22 +34,28 @@ void serviceRadio() {
   }
 }
 
-  void setup() {
+constexpr uint8_t PIN_STATUS = 7;
+constexpr uint8_t PIN_BLUE = 3;
+constexpr uint8_t PIN_RED = 5;
+constexpr uint8_t PIN_GREEN = 6;
+void setup() {
   Serial.begin(SERIAL_BAUDRATE);
   Serial.println(F("DANCE NODE 001"));
 
-  pinMode(3, OUTPUT);
-  pinMode(5, OUTPUT);
-  pinMode(6, OUTPUT);
+  pinMode(PIN_BLUE, OUTPUT);
+  pinMode(PIN_RED, OUTPUT);
+  pinMode(PIN_GREEN, OUTPUT);
+  pinMode(PIN_STATUS, OUTPUT);
 
+  digitalWrite(PIN_STATUS, HIGH);
   radioSetup();
 }
 
 void loop() {
   serviceRadio();
 
-  analogWrite(3, (colors)& 0xff); // nada
-  analogWrite(5, (colors >>16) & 0xff); // red
-  analogWrite(6, (colors>>8) & 0xff); // green
+  analogWrite(PIN_BLUE, (colors)& 0xff); // BLUE
+  analogWrite(PIN_RED,  (colors >>16) & 0xff); // red
+  analogWrite(PIN_GREEN, (colors>>8) & 0xff); // green
 
 }
