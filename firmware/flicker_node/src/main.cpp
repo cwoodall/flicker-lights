@@ -9,8 +9,8 @@
 constexpr int SERIAL_BAUDRATE = 9600;
 constexpr int RADIO_POWER_LEVEL = RF24_PA_LOW;
 constexpr uint8_t PIN_STATUS = 7;
-constexpr uint8_t PIN_BLUE = 3;
-constexpr uint8_t PIN_RED = 5;
+constexpr uint8_t PIN_BLUE = 5;
+constexpr uint8_t PIN_RED = 3;
 constexpr uint8_t PIN_GREEN = 6;
 
 static RF24 m_radio(9, 10);
